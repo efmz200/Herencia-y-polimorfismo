@@ -26,20 +26,44 @@ public abstract class Agente {
     public abstract boolean buscar_amenaza();
     public abstract void marcar_objetivo();
     public abstract void buscar_recurso();
+
+    public void buscar_aliado(Agente[] aliados){   
+        for(int i=0;i<aliados.length;i++){
+            Agente agt_aux= aliados[i];
+            if(Math.abs(agt_aux.pos_y-pos_y)==1 && Math.abs(agt_aux.pos_x-pos_x)==1){//Revisa que el aliado este en un radio de 1
+
+            }
+        }    
+
+    }
+    public boolean colision(Agente agt){//
+
+
+        return true;
+    }
     public void mover(int direccion){//se debe cambiar para que reciva una lista de objetos para saber si hay obstaculos
+        if (direccion<1){
+            direccion = (int) (Math.random()*4+1);
+        }
         switch(direccion){
             case 1:
                 pos_y++;
+                se_movio=true;
                 break;
             case 2:
                 pos_y--;
+                se_movio=true;
                 break;
             case 3:
                 pos_x++;
+                se_movio=true;
                 break;
             case 4:
                 pos_x--;
+                se_movio=true;
+                break;
         }
     } 
+
     
 }
