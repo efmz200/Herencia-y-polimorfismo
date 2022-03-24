@@ -27,16 +27,16 @@ public abstract class Agente {
     public abstract void marcar_objetivo();
     public abstract void buscar_recurso();
 
-    public void buscar_aliado(Agente[] aliados){   
-        for(int i=0;i<aliados.length;i++){
-            Agente agt_aux= aliados[i];
+    public void buscar_aliado(List<Agente> aliados){   
+        for(int i=0;i<aliados.size();i++){
+            Agente agt_aux= aliados.get(i);
             if(Math.abs(agt_aux.pos_y-pos_y)==1 && Math.abs(agt_aux.pos_x-pos_x)==1){//Revisa que el aliado este en un radio de 1
 
             }
         }    
 
     }
-    public boolean colision(Agente agt){//
+    public boolean colision(Agente agt){
 
 
         return true;
