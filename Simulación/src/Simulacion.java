@@ -14,16 +14,61 @@ public class Simulacion {
 	}
 
 	public void movimiento () {
-		for (int i=0; i<agentes.size (); i++) {
-			Agente agt_aux = agentes.get(i);
-			if (Math.abs ())
+		for (int i=0; i<agentes.size (); i++) {  //estamos recorriendo la lista de Agentes
+			Agente agt_aux = agentes.get(i); //Estamos seleccionando un agente
+			if (agt_aux.get_se_movio() == true) { // Revisando si el agente se movio
+				continue;
+			}
+			else {
+				agt_aux.mover (0); //agregar lista de objetos
+			}
 
 		}
 
 	}
-	
 
+	public void revisar_objetos () {
+		for (int i=0; i<objetos.size (); i++) {
+			Objeto agt_aux = objetos.get(i);
+			if (agt_aux.get_vida() == 0) {
+				objetos.set(i, new Amenaza(10, (int) Math.random() *50, (int) Math.random() *50)); //posiciones X, Y   Realizar validaciones 
+			} 
+			}
+
+		}
+	
+	public void generar_objetos() {
+		for (int i=0; i<4; i++) { 
+			objetos.add(new Amenaza(10, (int) Math.random() *50, (int) Math.random() *50)); 
+			objetos.add(new Recurso(10, (int) Math.random() *50, (int) Math.random() *50));
+			objetos.add(new Obstaculo(10, (int) Math.random() *50, (int) Math.random() *50));
+		}
+
+	}
+
+	public void generar_agentes () { 
+		for (int i=0; i<49; i++) { 
+			//agentes.add(new Amenaza((int) Math.random() *50, (int) Math.random() *50));
+
+		}
+	}
+	//public void actualizar_interfaz () {}
+
+	public void reiniciar_variable_movimiento() {
+		for (int i= 0; i<agentes.size (); i++) {
+			Agente agt_aux = agentes.get(i);
+			agt_aux.set_se_movio (false);
+			agentes.set (i, agt_aux);
+		}
+
+	}
+
+	//public void simular () {
+
+	//}
+	
 }
+
 
 
 
