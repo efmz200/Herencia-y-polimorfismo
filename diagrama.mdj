@@ -3210,7 +3210,7 @@
 											"top": 190,
 											"width": 219.2861328125,
 											"height": 13,
-											"text": "+reiniciar_variable_movimineto(): void",
+											"text": "+reiniciar_variable_movimiento(): void",
 											"horizontalAlignment": 0
 										},
 										{
@@ -4513,7 +4513,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF/mow74e5gyRY="
 							},
-							"name": "reiniciar_variable_movimineto",
+							"name": "reiniciar_variable_movimiento",
 							"parameters": [
 								{
 									"_type": "UMLParameter",
