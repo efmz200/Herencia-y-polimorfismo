@@ -10,7 +10,6 @@ public abstract class Agente {
     private int estado;//0 si esta neutro, 1 si esta atacando, -1 si está huyendo
     private boolean lleva_carga;
     private boolean se_movio;
-    private List<Agente> seguidores;
     
     public Agente(int y,int x){
         pos_y=y;
@@ -18,7 +17,7 @@ public abstract class Agente {
         estado=0;
         lleva_carga=false;
         se_movio=false;
-        seguidores= new ArrayList<Agente>();
+        
                  
     }
     public abstract void recolectar();//se debe cambiar para que reciva una lista de objetos
@@ -86,10 +85,7 @@ public abstract class Agente {
     }
     public void set_se_movio(boolean movio){
         se_movio=movio;
-    }
-    public void add_agente(Agente agt){
-        seguidores.add(agt);
-    }
+    }  
 
     public int get_pos_y(){
         return pos_y;
@@ -112,9 +108,7 @@ public abstract class Agente {
     public boolean get_se_movio(){
         return se_movio;
     }
-    public List<Agente> get_seguidores(){
-        return seguidores;
-    }
+    
 
     
 }
