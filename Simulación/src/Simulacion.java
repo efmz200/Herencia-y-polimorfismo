@@ -27,9 +27,9 @@ public class Simulacion {
 
 	}
 
-	public void revisar_objetos () {
+	public void revisar_objetos () {//llama a la funcion de revisar vida de los objetos para reposicionarlos
 		for (int i=0; i<objetos.size (); i++) {
-			Objeto obj_aux = objetos.get(i);
+				Objeto obj_aux = objetos.get(i);
 				obj_aux.revisarVida();
 			}
 
@@ -37,9 +37,9 @@ public class Simulacion {
 	
 	public void generar_objetos() {
 		for (int i=0; i<4; i++) { 
-			objetos.add(new Amenaza(10, (int) Math.random() *50, (int) Math.random() *50)); 
-			objetos.add(new Recurso(10, (int) Math.random() *50, (int) Math.random() *50));
-			objetos.add(new Obstaculo(10, (int) Math.random() *50, (int) Math.random() *50));
+			objetos.add(new Amenaza(-11, (int) Math.random() *50, (int) Math.random() *50)); 
+			objetos.add(new Recurso(11, (int) Math.random() *50, (int) Math.random() *50));
+			objetos.add(new Obstaculo(0, (int) Math.random() *50, (int) Math.random() *50));
 		}
 
 	}
