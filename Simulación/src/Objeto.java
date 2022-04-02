@@ -13,28 +13,29 @@ public abstract class Objeto  {
 
 	}
 
-//getters and setters
-public void set_vida (int vida) {
-	this.vida = vida;
-}
+	public abstract void revisarVida();
+	//getters and setters
+	public void set_vida (int vida) {
+		this.vida = vida;
+	}
 
-public void set_pos_x (int pos_x) {
-	this.pos_x = pos_x;
-}
+	public void set_pos_x (int pos_x) {
+		this.pos_x = pos_x;
+	}
 
-public void set_pos_y (int pos_y){
-	this.pos_y = pos_y;
-}
+	public void set_pos_y (int pos_y){
+		this.pos_y = pos_y;
+	}
 
-public int get_vida () {
-	return vida;
-	
-}
-public int get_pos_x () {
-	return pos_x;
-}
-public int get_pos_y () {
-	return pos_y;
-}
+	public int get_vida () {
+		return vida;
+		
+	}
+	public int get_pos_x () {
+		return pos_x;
+	}
+	public int get_pos_y () {
+		return pos_y;
+	}
 
 }
