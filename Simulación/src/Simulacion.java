@@ -29,10 +29,8 @@ public class Simulacion {
 
 	public void revisar_objetos () {
 		for (int i=0; i<objetos.size (); i++) {
-			Objeto agt_aux = objetos.get(i);
-			if (agt_aux.get_vida() == 0) {
-				objetos.set(i, new Amenaza(10, (int) Math.random() *50, (int) Math.random() *50)); //posiciones X, Y   Realizar validaciones 
-			} 
+			Objeto obj_aux = objetos.get(i);
+				obj_aux.revisarVida();
 			}
 
 		}
