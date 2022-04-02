@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+
 import java.util.List;
 //import java.util.Random;
 
@@ -72,7 +72,7 @@ public abstract class Agente {
         pos_y=y;
     }
     public void set_pos_y_obj(int y){
-        pos_x_objetivo=y;
+        pos_y_objetivo=y;
     }
     public void set_pos_x_obj(int x){
         pos_x_objetivo=x;
@@ -94,7 +94,7 @@ public abstract class Agente {
         return pos_y;
     }
     public int get_pos_y_obj(){
-        return pos_x_objetivo;
+        return pos_y_objetivo;
     }
     public int get_pos_x_obj(){
         return pos_x_objetivo;
