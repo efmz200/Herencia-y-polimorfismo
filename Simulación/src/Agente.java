@@ -18,10 +18,9 @@ public abstract class Agente {
     }
     public abstract void recolectar();//se debe cambiar para que reciva una lista de objetos
     public abstract boolean buscar_aliado();//
-    public abstract boolean buscar_amenaza();
     public abstract void marcar_objetivo();
     public abstract void buscar_recurso();    
-    public abstract void buscar_amenaza(List<Objeto> objetos);    
+    public abstract boolean buscar_amenaza(List<Objeto> objetos);    
 
 
     public void buscar_aliado(List<Agente> aliados){   
@@ -32,9 +31,7 @@ public abstract class Agente {
             }
         } 
     }
-    public boolean colision(Agente agt){
-        return true;
-    }
+    
     public void mover(int direccion){//se debe cambiar para que reciva una lista de objetos para saber si hay obstaculos
         if (direccion<1){
             direccion = (int) (Math.random()*4+1);

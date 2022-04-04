@@ -7,7 +7,7 @@ public class Recolector extends Agente{
         
     }
     @Override 
-    public void buscar_amenaza(List<Objeto> objetos){
+    public boolean buscar_amenaza(List<Objeto> objetos){
         for(int i=0;i<objetos.size();i++){
             Objeto obj_aux=objetos.get(i);
             if(obj_aux.get_vida()<1){
@@ -15,13 +15,14 @@ public class Recolector extends Agente{
                 int dist_y=get_pos_y()-obj_aux.get_pos_y();
                 int dist_objt = (int) Math.sqrt( Math.pow(dist_x,2)+Math.pow(dist_y,2));                
                 if(dist_objt<4){
-                    huir();
-                    break;
+                    huir(objetos,i);
+                    return false;
                 }        
             }
-        }        
+        } 
+        return true;       
     }
-    public void huir(){
+    public void huir(List<Objeto> objetos,int num_amenaza){
         
     }
     @Override
@@ -33,12 +34,6 @@ public class Recolector extends Agente{
     @Override
     public boolean buscar_aliado() {
         
-        return false;
-    }
-
-    @Override
-    public boolean buscar_amenaza() {
-        // TODO Auto-generated method stub
         return false;
     }
 
