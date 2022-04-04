@@ -42,11 +42,11 @@ public class Simulacion {
 
 		}
 	}
-	//public void actualizar_interfaz () {}
 
 	//public void simular () {
 
-	//}
+
+	}
 	
 }
 
