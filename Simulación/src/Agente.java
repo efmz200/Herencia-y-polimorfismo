@@ -93,9 +93,7 @@ public abstract class Agente {
     public boolean get_carga(){
         return lleva_carga;
     }
-    public boolean get_se_movio(){
-        return se_movio;
-    }
+    
     
 
     
