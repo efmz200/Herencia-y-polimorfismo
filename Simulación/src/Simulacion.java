@@ -16,13 +16,7 @@ public class Simulacion {
 	public void movimiento () {
 		for (int i=0; i<agentes.size (); i++) {  //estamos recorriendo la lista de Agentes
 			Agente agt_aux = agentes.get(i); //Estamos seleccionando un agente
-			if (agt_aux.get_se_movio() == true) { // Revisando si el agente se movio
-				continue;
-			}
-			else {
-				agt_aux.mover (0); //agregar lista de objetos
-			}
-
+			agt_aux.mover (0); //agregar lista de objetos
 		}
 
 	}
