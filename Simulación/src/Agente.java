@@ -21,11 +21,19 @@ public abstract class Agente {
                  
     }
     public abstract void recolectar();//se debe cambiar para que reciva una lista de objetos
-    public abstract boolean buscar_aliado();
+    public abstract boolean buscar_aliado();//
     public abstract boolean buscar_amenaza();
     public abstract void marcar_objetivo();
     public abstract void buscar_recurso();
 
+    
+    public void buscar_amenaza(List<Object> objetos){
+        for(int i=0;i<objetos.size();i++){
+            Object obj_aux=objetos.get(i);
+            if(obj_aux.)
+        }
+
+    }
     public void buscar_aliado(List<Agente> aliados){   
         for(int i=0;i<aliados.size();i++){
             Agente agt_aux= aliados.get(i);

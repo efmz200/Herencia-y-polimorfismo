@@ -5,10 +5,10 @@ public class Recurso extends Objeto {
 	}
 
 	public void revisarVida(){
-		if (this.get_vida()<1){
+		if (this.get_vida()<=1){
 			set_pos_x((int) Math.random() *49);
 			set_pos_y((int) Math.random() *49);
-			set_vida(10);
+			set_vida(11);
 		}
 	}
 

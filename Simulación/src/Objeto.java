@@ -28,8 +28,7 @@ public abstract class Objeto  {
 	}
 
 	public int get_vida () {
-		return vida;
-		
+		return vida;		
 	}
 	public int get_pos_x () {
 		return pos_x;
