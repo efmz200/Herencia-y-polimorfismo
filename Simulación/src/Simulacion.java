@@ -32,16 +32,14 @@ public class Simulacion {
 				Objeto obj_aux = objetos.get(i);
 				obj_aux.revisarVida();
 			}
-
 		}
 	
 	public void generar_objetos() {
-		for (int i=0; i<4; i++) { 
+		for (int i=0; i<5; i++) { 
 			objetos.add(new Amenaza(-11, (int) Math.random() *50, (int) Math.random() *50)); 
 			objetos.add(new Recurso(11, (int) Math.random() *50, (int) Math.random() *50));
 			objetos.add(new Obstaculo(0, (int) Math.random() *50, (int) Math.random() *50));
 		}
-
 	}
 
 	public void generar_agentes () { 
