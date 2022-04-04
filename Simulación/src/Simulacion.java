@@ -50,15 +50,6 @@ public class Simulacion {
 	}
 	//public void actualizar_interfaz () {}
 
-	public void reiniciar_variable_movimiento() {
-		for (int i= 0; i<agentes.size (); i++) {
-			Agente agt_aux = agentes.get(i);
-			agt_aux.set_se_movio (false);
-			agentes.set (i, agt_aux);
-		}
-
-	}
-
 	//public void simular () {
 
 	//}
