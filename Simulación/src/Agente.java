@@ -24,11 +24,13 @@ public abstract class Agente {
 
     
     
-    
+    public void actuar(){
+        //aqui va la logica del agente
+    }
     public boolean buscar_recurso(List<Objeto> objetos){
         for(int i=0;i<objetos.size();i++){
             Objeto obj_aux=objetos.get(i);
-            if(obj_aux.get_vida()<1){
+            if(obj_aux.get_vida()>1){
                 int dist_x=get_pos_x()-obj_aux.get_pos_x();
                 int dist_y=get_pos_y()-obj_aux.get_pos_y();
                 int dist_objt = (int) Math.sqrt( Math.pow(dist_x,2)+Math.pow(dist_y,2));                
@@ -44,17 +46,17 @@ public abstract class Agente {
     public boolean buscar_amenaza(List<Objeto> objetos){
         for(int i=0;i<objetos.size();i++){
             Objeto obj_aux=objetos.get(i);
-            if(obj_aux.get_vida()<1){
+            if(obj_aux.get_vida()<-1){
                 int dist_x=get_pos_x()-obj_aux.get_pos_x();
                 int dist_y=get_pos_y()-obj_aux.get_pos_y();
                 int dist_objt = (int) Math.sqrt( Math.pow(dist_x,2)+Math.pow(dist_y,2));                
                 if(dist_objt<4){
                     accion_especial(objetos,i);
-                    return false;
+                    return true;
                 }        
             }
         } 
-        return true; 
+        return false; 
     }
 
     public boolean buscar_aliado(List<Agente> aliados,List<Objeto> obstaculos){   
