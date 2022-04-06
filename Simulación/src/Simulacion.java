@@ -20,34 +20,48 @@ public class Simulacion {
 		}
 
 	}
-
-	public void revisar_objetos () {//llama a la funcion de revisar vida de los objetos para reposicionarlos
-		for (int i=0; i<objetos.size (); i++) {
-				Objeto obj_aux = objetos.get(i);
-				obj_aux.revisarVida();
-			}
-		}
 	
 	public void generar_objetos() {
 		for (int i=0; i<5; i++) { 
-			objetos.add(new Amenaza(-11, (int) Math.random() *50, (int) Math.random() *50)); 
-			objetos.add(new Recurso(11, (int) Math.random() *50, (int) Math.random() *50));
-			objetos.add(new Obstaculo(0, (int) Math.random() *50, (int) Math.random() *50));
+			objetos.add(new Amenaza(-11, (int) Math.random() *46 +2, (int) Math.random() *46 +2)); //45 para que no se salga de los limites 
+			objetos.add(new Recurso(11, (int) Math.random() *46  +2, (int) Math.random() *46 +2));
+			objetos.add(new Obstaculo(0, (int) Math.random() *46 +2, (int) Math.random() *46 +2));
 		}
 	}
 
 	public void generar_agentes () { 
-		for (int i=0; i<49; i++) { 
-			//agentes.add(new Amenaza((int) Math.random() *50, (int) Math.random() *50));
-
+		for (int i=0; i<24; i++) { 
+			agentes.add(new Defensor ((int) Math.random() *48 +1, (int) Math.random() *48 +1));
+			agentes.add(new Recolector ((int) Math.random() *48 +1, (int) Math.random() *48 +1));
 		}
 	}
 
-	//public void simular () {
+
+	public void actualizar_interfaz () {
 
 
-	//}
+
+	}
+
+	public void simular () {
+		generar_objetos();
+		while (true) {
+			for (int i= 0; i<agentes.size(); i++) {
+				agentes.get (i).actuar();
+			}
+			for (int i=0; i<objetos.size (); i++) {
+				objetos.get (i).revisarVida();
+			}
+			actualizar_interfaz();
+		}
+
+		}
 	
+	public void actualizar_agentes () {
+
+
+
+
 }
 
 
