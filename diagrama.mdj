@@ -358,13 +358,30 @@
 											"height": 13,
 											"text": "+objetivo_alcanzado(): bool",
 											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAF//2KQPowZ3pA=",
+											"_parent": {
+												"$ref": "AAAAAAF/mnQs6uPj5Lo="
+											},
+											"model": {
+												"$ref": "AAAAAAF//2KQNIwWv4M="
+											},
+											"font": "Arial;13;0",
+											"left": 157,
+											"top": 561,
+											"width": 215,
+											"height": 13,
+											"text": "+accion_especial(): void",
+											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 152,
 									"top": 451,
 									"width": 225,
-									"height": 113
+									"height": 128
 								},
 								{
 									"_type": "UMLReceptionCompartmentView",
@@ -536,30 +553,11 @@
 									"model": {
 										"$ref": "AAAAAAF/mnSJleQGqcY="
 									},
-									"subViews": [
-										{
-											"_type": "UMLOperationView",
-											"_id": "AAAAAAF/3DyCw3KFhkY=",
-											"_parent": {
-												"$ref": "AAAAAAF/mnSJluQPRvI="
-											},
-											"model": {
-												"$ref": "AAAAAAF/3DyCuHKC0Pw="
-											},
-											"font": "Arial;13;0",
-											"left": 85,
-											"top": 648,
-											"width": 159,
-											"height": 13,
-											"text": "+huir(): void",
-											"horizontalAlignment": 0
-										}
-									],
 									"font": "Arial;13;0",
 									"left": 80,
 									"top": 643,
 									"width": 169,
-									"height": 23
+									"height": 10
 								},
 								{
 									"_type": "UMLReceptionCompartmentView",
@@ -731,30 +729,11 @@
 									"model": {
 										"$ref": "AAAAAAF/mnS16+Qxau4="
 									},
-									"subViews": [
-										{
-											"_type": "UMLOperationView",
-											"_id": "AAAAAAF/mn+bt+Uttnc=",
-											"_parent": {
-												"$ref": "AAAAAAF/mnS17OQ6nqE="
-											},
-											"model": {
-												"$ref": "AAAAAAF/mn+br+UqOhA="
-											},
-											"font": "Arial;13;0",
-											"left": 261,
-											"top": 648,
-											"width": 158,
-											"height": 13,
-											"text": "+atacar(): void",
-											"horizontalAlignment": 0
-										}
-									],
 									"font": "Arial;13;0",
 									"left": 256,
 									"top": 643,
 									"width": 168,
-									"height": 23
+									"height": 10
 								},
 								{
 									"_type": "UMLReceptionCompartmentView",
@@ -4053,6 +4032,25 @@
 									"direction": "return"
 								}
 							]
+						},
+						{
+							"_type": "UMLOperation",
+							"_id": "AAAAAAF//2KQNIwWv4M=",
+							"_parent": {
+								"$ref": "AAAAAAF/mnQs6OPaBFg="
+							},
+							"name": "accion_especial",
+							"parameters": [
+								{
+									"_type": "UMLParameter",
+									"_id": "AAAAAAF//2LDG4yG+js=",
+									"_parent": {
+										"$ref": "AAAAAAF//2KQNIwWv4M="
+									},
+									"type": "void",
+									"direction": "return"
+								}
+							]
 						}
 					]
 				},
@@ -4092,27 +4090,6 @@
 								}
 							}
 						}
-					],
-					"operations": [
-						{
-							"_type": "UMLOperation",
-							"_id": "AAAAAAF/3DyCuHKC0Pw=",
-							"_parent": {
-								"$ref": "AAAAAAF/mnSJleQGqcY="
-							},
-							"name": "huir",
-							"parameters": [
-								{
-									"_type": "UMLParameter",
-									"_id": "AAAAAAF/3DzznHPwUDk=",
-									"_parent": {
-										"$ref": "AAAAAAF/3DyCuHKC0Pw="
-									},
-									"type": "void",
-									"direction": "return"
-								}
-							]
-						}
 					]
 				},
 				{
@@ -4150,27 +4127,6 @@
 									"$ref": "AAAAAAF/mnQs6OPaBFg="
 								}
 							}
-						}
-					],
-					"operations": [
-						{
-							"_type": "UMLOperation",
-							"_id": "AAAAAAF/mn+br+UqOhA=",
-							"_parent": {
-								"$ref": "AAAAAAF/mnS16+Qxau4="
-							},
-							"name": "atacar",
-							"parameters": [
-								{
-									"_type": "UMLParameter",
-									"_id": "AAAAAAF/mn/DqeUxakU=",
-									"_parent": {
-										"$ref": "AAAAAAF/mn+br+UqOhA="
-									},
-									"type": "void",
-									"direction": "return"
-								}
-							]
 						}
 					]
 				},
