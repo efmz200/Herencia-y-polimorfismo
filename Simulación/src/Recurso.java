@@ -6,13 +6,10 @@ public class Recurso extends Objeto {
 
 	public void revisarVida(){
 		if (this.get_vida()<=1){
-			set_pos_x((int) Math.random() *49);
-			set_pos_y((int) Math.random() *49);
+			set_pos_x((int) Math.random() *46 +2);
+			set_pos_y((int) Math.random() *46 +2);
 			set_vida(11);
 		}
 	}
-
-
-
 	
 }
