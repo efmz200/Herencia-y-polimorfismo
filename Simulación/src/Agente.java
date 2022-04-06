@@ -35,7 +35,7 @@ public abstract class Agente {
                 int dist_y=get_pos_y()-obj_aux.get_pos_y();
                 int dist_objt = (int) Math.sqrt( Math.pow(dist_x,2)+Math.pow(dist_y,2));                
                 if(dist_objt<4){
-                    accion_especial(objetos,i);
+                    //funcion al encontrar recurso 
                     return false;
                 }        
             }
@@ -90,7 +90,7 @@ public abstract class Agente {
         return false;//no tenia ningun aleado cerca por lo que no se mivió 
     }
     
-    public void mover(int direccion,List<Objeto> obstaculos){
+    public void mover(int direccion,List<Objeto> obstaculos){//varificar la colision
         if (direccion<1){
             direccion = (int) (Math.random()*4+1);
         }
