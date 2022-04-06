@@ -30,6 +30,7 @@ public class Simulacion {
 	}
 
 	public void generar_agentes () { 
+		agentes.add(new Recolector ((int) Math.random() *48 +1, (int) Math.random() *48 +1));
 		for (int i=0; i<24; i++) { 
 			agentes.add(new Defensor ((int) Math.random() *48 +1, (int) Math.random() *48 +1));
 			agentes.add(new Recolector ((int) Math.random() *48 +1, (int) Math.random() *48 +1));
@@ -39,14 +40,13 @@ public class Simulacion {
 
 	public void actualizar_interfaz () {
 
-
-
 	}
 
 	public void simular () {
 		generar_objetos();
+		generar_agentes();
 		while (true) {
-			for (int i= 0; i<agentes.size(); i++) {
+			for (int i = 1; i<agentes.size(); i++) {
 				agentes.get (i).actuar();
 			}
 			for (int i=0; i<objetos.size (); i++) {
@@ -58,9 +58,6 @@ public class Simulacion {
 		}
 	
 	public void actualizar_agentes () {
-
-
-
 
 }
 

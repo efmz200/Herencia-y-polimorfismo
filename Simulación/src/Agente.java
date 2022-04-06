@@ -23,7 +23,6 @@ public abstract class Agente {
 
 
     
-    
     public void actuar(){
         //aqui va la logica del agente
     }
