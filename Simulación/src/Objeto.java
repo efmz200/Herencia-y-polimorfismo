@@ -14,11 +14,12 @@ public abstract class Objeto  {
 	}
 
 	public abstract void revisarVida();
+	
 	//getters and setters
 	public void set_vida (int vida) {
 		this.vida = vida;
 	}
-
+	
 	public void set_pos_x (int pos_x) {
 		this.pos_x = pos_x;
 	}

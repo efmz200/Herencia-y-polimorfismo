@@ -10,11 +10,24 @@ public class Simulacion {
 	public Simulacion() {
 		agentes = new ArrayList<Agente>();
 		objetos = new ArrayList<Objeto>();
-		posicion_casa = (int) (Math.random() *4);
+		posicion_casa = (int) (Math.random() *3);
 	}
-
+	
+	public void posicionar_casa(){
+		switch(posicion_casa){
+			case 0://casa esquina sup izq
+				agentes.add(new Recolector (0,1));
+			case 1://casa esquina sup der
+				agentes.add(new Recolector (49,1));
+			case 2://casa esquina inf izq
+				agentes.add(new Recolector (0,48));
+			case 3://casa esquina inf der
+				agentes.add(new Recolector (49,48));
+		}	
+		
+	}
 	public void movimiento () {
-		for (int i=0; i<agentes.size (); i++) {  //estamos recorriendo la lista de Agentes
+		for (int i=1; i<agentes.size (); i++) {  //estamos recorriendo la lista de Agentes
 			Agente agt_aux = agentes.get(i); //Estamos seleccionando un agente
 			agt_aux.mover(0,objetos); //agregar lista de objetos
 		}
@@ -47,7 +60,7 @@ public class Simulacion {
 		generar_agentes();
 		while (true) {
 			for (int i = 1; i<agentes.size(); i++) {
-				agentes.get (i).actuar();
+				agentes.get (i).actuar(objetos,agentes);
 			}
 			for (int i=0; i<objetos.size (); i++) {
 				objetos.get (i).revisarVida();
