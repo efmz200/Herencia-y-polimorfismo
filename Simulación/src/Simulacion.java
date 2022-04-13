@@ -12,17 +12,21 @@ public class Simulacion {
 		objetos = new ArrayList<Objeto>();
 		posicion_casa = (int) (Math.random() *3);
 	}
-	
+	public void iniciar(){
+		posicionar_casa();
+		generar_objetos();
+		generar_agentes();
+	}
 	public void posicionar_casa(){
 		switch(posicion_casa){
 			case 0://casa esquina sup izq
-				agentes.add(new Recolector (0,1));
+				agentes.add(new Recolector (1,1));
 			case 1://casa esquina sup der
 				agentes.add(new Recolector (49,1));
 			case 2://casa esquina inf izq
-				agentes.add(new Recolector (0,48));
+				agentes.add(new Recolector (1,49));
 			case 3://casa esquina inf der
-				agentes.add(new Recolector (49,48));
+				agentes.add(new Recolector (49,49));
 		}	
 		
 	}
