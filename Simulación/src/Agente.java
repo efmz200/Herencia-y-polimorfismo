@@ -22,27 +22,40 @@ public abstract class Agente {
     
     public void actuar(List<Objeto> obstaculos,List<Agente> aliados){
         boolean mov=false;
-        //revisa si hay amenazas
-        if(mov==false){
-            mov=buscar_amenaza(obstaculos);
-        }
-        //si está cargado se vuelve a casa
-        else if(mov==false && estado==1){
-            mov=volver_casa(obstaculos,aliados.get(0));
-        }
-        //revisa si hay recursos
-        else if(mov==false){
-            mov=buscar_recurso(obstaculos);
-        }
-        //revisa si hay aliados
-        else if(mov==false){
-            mov=buscar_aliado(aliados,obstaculos);
-        }
-        //se mueve random
-        else if(mov==false){
-            mover(0,obstaculos);
-        }
-        
+        while(true){
+            if(buscar_amenaza(obstaculos)){//revisa si hay amenazas
+                System.out.print("amenaza \n"); 
+                break;   
+            } 
+            if(volver_casa(obstaculos,aliados.get(0))){//revisa si hay aliados 
+                System.out.print("econtre aliado\n");   
+                break;
+            }
+            if(buscar_amenaza(obstaculos)){//revisa si hay amenazas
+                System.out.print("encontre una amenaza \n");
+                break;
+            }
+            if(estado==1){//si tiene carga intenta volver a casa
+                if(volver_casa(obstaculos,aliados.get(0))){
+                    System.out.print("volviendo a casa \n");
+                    break;
+    
+                }    
+            }
+            if(buscar_recurso(obstaculos)){ //busca recursos
+                System.out.print("encontre un recurso \n");
+                break;    
+            }
+            if(buscar_aliado(aliados,obstaculos)){//busca aliados
+                System.out.println("Encontré un aliado \n");
+                break;
+            }
+            else{
+                System.out.print("solo me movi. \n");
+                mover(0,obstaculos);
+                break;
+            }
+        }      
     }
 
     //funcion que hace que el agente regrese a casa al estar cargado
@@ -134,7 +147,7 @@ public abstract class Agente {
     }
 
     public boolean buscar_aliado(List<Agente> aliados,List<Objeto> obstaculos){   
-        for(int i=0;i<aliados.size();i++){
+        for(int i=1;i<aliados.size();i++){
             Agente agt_aux= aliados.get(i);
             if(Math.abs(agt_aux.pos_y-pos_y)==3 && Math.abs(agt_aux.pos_x-pos_x)==3){//Revisa que el aliado este en un radio de 1
                 switch((int) Math.random()*1){ //decide si movere al aliado o de manera random
@@ -166,7 +179,7 @@ public abstract class Agente {
     
     public void mover(int direccion,List<Objeto> obstaculos){//varificar la colision
         if (direccion<1){
-            direccion = (int) (Math.random()*4+1);
+            direccion = (int) (Math.random()*4)+1;
         }
         switch(direccion){
             case 1:
@@ -205,11 +218,11 @@ public abstract class Agente {
                     }
                 }
             case 2:
-            for(int i=0; i < obstaculos.size();i++){
-                if(agt.get_pos_y()-1==obstaculos.get(i).get_pos_y()+1){//colision en y por abajo
-                    return true;
+                for(int i=0; i < obstaculos.size();i++){
+                    if(agt.get_pos_y()-1==obstaculos.get(i).get_pos_y()+1){//colision en y por abajo
+                        return true;
+                    }
                 }
-            }
             case 3:
                 for(int i=0; i < obstaculos.size();i++){//colision en x por la izq
                     if(agt.get_pos_y()+1==obstaculos.get(i).get_pos_x()){
@@ -217,11 +230,11 @@ public abstract class Agente {
                     }
                 }
             case 4:
-            for(int i=0; i < obstaculos.size();i++){//posicion en x por al der
-                if(agt.get_pos_x()-1==obstaculos.get(i).get_pos_x()){
-                    return true;
-                }
-            }
+                for(int i=0; i < obstaculos.size();i++){//posicion en x por al der
+                    if(agt.get_pos_x()-1==obstaculos.get(i).get_pos_x()){
+                        return true;
+                    }
+                }   
         }
         return false;
     }
@@ -230,8 +243,8 @@ public abstract class Agente {
     public void set_pos_y(int y){
         pos_y=y;
     }
-    public void set_pos_x(int y){
-        pos_y=y;
+    public void set_pos_x(int x){
+        pos_x=x;
     }
     public void set_pos_y_obj(int y){
         pos_y_objetivo=y;
@@ -250,7 +263,7 @@ public abstract class Agente {
         return pos_y;
     }
     public int get_pos_x(){
-        return pos_y;
+        return pos_x;
     }
     public int get_pos_y_obj(){
         return pos_y_objetivo;
