@@ -110,14 +110,14 @@ public class Simulacion {
 				mat.get(fila+1).set(col+1,2);
 				mat.get(fila).set(col+1,2);
 			}	
-			if(obj_aux.get_vida()>=0){
+			if(obj_aux.get_vida()>0){
 				mat.get(fila).set(col,3);
 				mat.get(fila+1).set(col,3);
 				mat.get(fila+1).set(col+1,3);
 				mat.get(fila).set(col+1,3);
 			}
 			
-			if(obj_aux.get_vida()<=0){
+			if(obj_aux.get_vida()<0){
 				mat.get(fila).set(col,4);
 				mat.get(fila+1).set(col,4);
 				mat.get(fila+1).set(col+1,4);
