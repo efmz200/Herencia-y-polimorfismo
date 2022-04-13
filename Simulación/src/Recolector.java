@@ -1,7 +1,5 @@
 import java.util.List;
 
-import javax.naming.event.ObjectChangeListener;
-
 public class Recolector extends Agente{
 
     public Recolector(int posicion_x, int posicion_y){
