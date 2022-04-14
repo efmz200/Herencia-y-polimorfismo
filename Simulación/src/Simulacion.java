@@ -134,10 +134,7 @@ public class Simulacion {
 			}
 		for (int i=0; i<objetos.size (); i++) {
 				objetos.get (i).revisarVida();
-			}
-			//actualizar_interfaz();
-		
-
+			}			
 		}
 
 }

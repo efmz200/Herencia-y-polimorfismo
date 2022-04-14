@@ -20,8 +20,7 @@ public abstract class Agente {
 
 
     
-    public void actuar(List<Objeto> obstaculos,List<Agente> aliados){
-        boolean mov=false;
+    public void actuar(List<Objeto> obstaculos,List<Agente> aliados){;
         while(true){
             if(buscar_amenaza(obstaculos)){//revisa si hay amenazas
                 System.out.print("amenaza \n"); 
@@ -39,7 +38,6 @@ public abstract class Agente {
                 if(volver_casa(obstaculos,aliados.get(0))){
                     System.out.print("volviendo a casa \n");
                     break;
-    
                 }    
             }
             if(buscar_recurso(obstaculos)){ //busca recursos

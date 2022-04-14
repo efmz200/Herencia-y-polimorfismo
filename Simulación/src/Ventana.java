@@ -44,32 +44,26 @@ public void rellenar_labels(){
             int tipo_casilla=mat.get(i).get(j);
             JLabel label = new JLabel();
             label.setOpaque(true);
-            System.out.println("empieza");
             switch((int) tipo_casilla){
                 case -1:
                     label.setBackground(Color.orange);//casa
                     panel.add(label);
-                    System.out.println("casa");
                     continue;
                 case 1:
                     label.setBackground(Color.yellow);//agente
                     panel.add(label);
-                    System.out.println("agente");
                     continue;
                 case 2:
                     label.setBackground(Color.blue);//obstaculo
                     panel.add(label);
-                    System.out.println("obstaculo");
                     continue;
                 case 3: 
                     label.setBackground(Color.green);//recurso
                     panel.add(label);
-                    System.out.println("recurso");
                     continue;
                 case 4:
                     label.setBackground(Color.red);//amenazas
                     panel.add(label);
-                    System.out.println("amenaza");
                     continue;
                 case 0:
                     label.setBackground(Color.black);//demas casillas
