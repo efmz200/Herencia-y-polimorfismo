@@ -5,8 +5,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.awt.*;
+import java.awt.event.*; 
 
-public class Ventana{
+public class Ventana implements ActionListener{
     ArrayList<ArrayList<Integer>> mat;
     JFrame ventana;
     JPanel panel;
@@ -27,7 +28,7 @@ public Ventana(){
     panel.setLayout(new GridLayout(50,51));
     rellenar_labels();
     simulButton = new JButton("simular"); 
-	//simulButton.addActionListener(this); 
+	simulButton.addActionListener(this); 
 	panel.add(simulButton); 
     ventana.add(panel);
     ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -36,7 +37,6 @@ public Ventana(){
 }
 
 public void rellenar_labels(){
-    //simulacion.simular();
     ArrayList<ArrayList<Integer>> mat=simulacion.obtener_matriz();
     System.out.println(mat.toString());
     for(int i=0;i<49;i++){
@@ -44,7 +44,6 @@ public void rellenar_labels(){
             int tipo_casilla=mat.get(i).get(j);
             JLabel label = new JLabel();
             label.setOpaque(true);
-            //label.setSize(1,1);
             System.out.println("empieza");
             switch((int) tipo_casilla){
                 case -1:
@@ -83,5 +82,20 @@ public void rellenar_labels(){
     }
 
 }
+
+@Override
+public void actionPerformed(ActionEvent e) {
+    panel= new JPanel();
+    panel.setLayout(new GridLayout(50,51));
+    simulacion.simular();
+    rellenar_labels(); 
+    panel.add(simulButton); 
+    ventana.add(panel);
+    ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    ventana.setVisible(true);   
+
+    
+}
+    
 
 }
