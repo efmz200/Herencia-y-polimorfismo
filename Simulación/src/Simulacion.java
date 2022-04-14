@@ -10,7 +10,7 @@ public class Simulacion {
 	public Simulacion() {
 		agentes = new ArrayList<Agente>();
 		objetos = new ArrayList<Objeto>();
-		posicion_casa = (int) (Math.random() *3);
+		posicion_casa = (int) (Math.random() *4);
 	}
 	public void iniciar(){
 		posicionar_casa();
@@ -49,13 +49,11 @@ public class Simulacion {
 	public void generar_agentes () { 
 		
 		for (int i=0; i<24; i++) { 
-			int posX = (int) (Math.random() *48);
-			int posY = (int) (Math.random() *48);
+			int posX = (int) (Math.random() *49);
+			int posY = (int) (Math.random() *49);
 			agentes.add(new Defensor (posX,posY));
-		}
-		for (int i=0; i<24; i++) { 
-			int posX = (int) (Math.random()*48);
-			int posY = (int) (Math.random()*48);			
+			posX = (int) (Math.random()*49);
+			posY = (int) (Math.random()*49);			
 			agentes.add(new Recolector (posX,posY));
 		}
 	}
