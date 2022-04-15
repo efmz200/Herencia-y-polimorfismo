@@ -17,32 +17,32 @@ public class Defensor extends Agente{
             amemanaza.set_vida(amemanaza.get_vida()+1);
             objamenazas.set(num_amenaza,amemanaza);
         }
-        switch ((int) Math.random()*1){// decide si acercarse a la amenaza en x o en y
+        switch ((int) Math.random()*2){// decide si acercarse a la amenaza en x o en y
             case 0:// se acerca en x
                 if(x<amenaza_x){
-                    if(get_pos_x()==0){
-                        break;
-                    }
-                    set_pos_x(get_pos_x()+1);   
-                }
-                if(x>amenaza_x+1){
                     if(get_pos_x()==49){
                         break;
                     }
-                    set_pos_x(get_pos_x()-1);                       
+                    mover(3,objamenazas);   
+                }
+                if(x>amenaza_x+1){
+                    if(get_pos_x()==0){
+                        break;
+                    }
+                    mover(4,objamenazas);                       
                 }
             case 1:// se acerca en y
-                if(y<amenaza_y){
+                if(y<amenaza_y-1){
                     if(get_pos_y()==0){
                         break;
                     }
-                    set_pos_y(get_pos_y()-1);    
+                    mover(1,objamenazas);    
                 }
-                if(y>amenaza_y+1){
+                if(y>amenaza_y){
                     if(get_pos_y()==49){
                         break;
                     }
-                    set_pos_y(get_pos_y()+1);    
+                    mover(2,objamenazas);    
                 }                                
         }
     }

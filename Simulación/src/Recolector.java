@@ -11,7 +11,7 @@ public class Recolector extends Agente{
         Objeto amenaza= amenazas.get(num_amenaza); 
         int x= get_pos_x();
         int y= get_pos_y();
-        switch ((int) Math.random()*1){// decide si acercarse al aliado en x o en y
+        switch ((int) Math.random()*2){// decide si acercarse al aliado en x o en y
             case 0:// se acerca en x
                 if(x<amenaza.get_pos_x()){
                     mover(4,amenazas);    

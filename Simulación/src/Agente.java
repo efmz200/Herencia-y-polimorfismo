@@ -24,26 +24,21 @@ public abstract class Agente {
         while(true){
             if(estado==1){//si tiene carga intenta volver a casa
                 if(volver_casa(obstaculos,aliados.get(0))){
-                    System.out.print("volviendo a casa \n");
                     break;
                 }    
             }
             if(buscar_amenaza(obstaculos)){//revisa si hay amenazas
-                System.out.print("amenaza \n"); 
                 break;   
             } 
             if(estado==0){
                 if(buscar_recurso(obstaculos)){ //busca recursos
-                    System.out.print("encontre un recurso \n");
                     break;    
                 }
             }            
             if(buscar_aliado(aliados,obstaculos)){//busca aliados
-                System.out.println("Encontré un aliado \n");
                 break;
             }
             else{
-                System.out.print("solo me movi. \n");
                 mover(0,obstaculos);
                 break;
             }
@@ -52,28 +47,27 @@ public abstract class Agente {
 
     //funcion que hace que el agente regrese a casa al estar cargado
     public boolean volver_casa(List<Objeto> obstaculos,Agente casa){
-        if (Math.abs(pos_x-casa.get_pos_x())<=1 && Math.abs(pos_x-casa.get_pos_x())<=1 ){//esta en rango de la casa
+        System.out.println("Estoy a: "+Math.abs(pos_x-casa.get_pos_x())+"en x de casa y a: "+(Math.abs(pos_y-casa.get_pos_y()))+"en y");
+        if ((Math.abs(pos_x-casa.get_pos_x())<2) && (Math.abs(pos_y-casa.get_pos_y())<2) ){//esta en rango de la casa
+            System.out.println("deje un recurso en casa en:"+pos_x+", "+ pos_y);
             estado=0;    
         }
         else{
-            switch ((int) Math.random()*2){// decide si acercarse al recurso en x o en y
-                case 0:// se acerca en x
-                    if(pos_x<casa.get_pos_x()){
-                        mover(3,obstaculos);    
-                    }
-                    if(pos_x>casa.get_pos_x()){
-                        mover(4,obstaculos);    
-                    }
-                case 1:// se acerca en y
-                    if(pos_y<casa.get_pos_x()){
-                        mover(1,obstaculos);    
-                    }
-                    if(pos_y>casa.get_pos_x()){
-                        mover(2,obstaculos);    
-                    }                                
+            if(pos_x<casa.get_pos_x()){
+                mover(3,obstaculos);                    
             }
+            else if(pos_x>casa.get_pos_x()){
+                mover(4,obstaculos);                    
+            }
+        
+            else if(pos_y<casa.get_pos_y()){
+                mover(1,obstaculos); 
+                   
+            }
+            else if(pos_y>casa.get_pos_y()){
+                mover(2,obstaculos);                    
+            } 
         }
-
         return true;
 
     }
@@ -87,9 +81,9 @@ public abstract class Agente {
                 if(dist_objt<4){
                     if(dist_objt < 2){
                         if(obj_aux.get_vida()>1){
-                            obj_aux.set_vida(obj_aux.get_vida()-1);// le baja la vida al objeto
-                            objetos.set(i,obj_aux);//actualiza el objeto en la lista de objetos 
-                            set_estado(1);  
+                            obj_aux.set_vida(obj_aux.get_vida()-1);// recoge un recurso
+                            objetos.set(i,obj_aux);//actualiza el recurso en la lista de objetos 
+                            estado=1;  
                         }                        
                             mover(0, objetos);
                         return true;
@@ -145,9 +139,9 @@ public abstract class Agente {
         for(int i=1;i<aliados.size();i++){
             Agente agt_aux= aliados.get(i);
             if(Math.abs(agt_aux.pos_y-pos_y)==3 && Math.abs(agt_aux.pos_x-pos_x)==3){//Revisa que el aliado este en un radio de 1
-                switch((int) Math.random()*2){ //decide si movere al aliado o de manera random
+                switch((int) (Math.random()*2)){ //decide si movere al aliado o de manera random
                     case 0://se mueve al aliado
-                        switch ((int) Math.random()*1){// decide si acercarse al aliado en x o en y
+                        switch ((int) (Math.random()*2)){// decide si acercarse al aliado en x o en y
                             case 0:// se acerca en x
                                 if(pos_x<agt_aux.get_pos_x()){
                                     mover(3,obstaculos);    
@@ -169,64 +163,122 @@ public abstract class Agente {
                 return true;   
             }
         } 
-        return false;//no tenia ningun aleado cerca por lo que no se mivió 
+        return false;//no tenia ningun aliado cerca por lo que no se movió 
     }
     
-    public void mover(int direccion,List<Objeto> obstaculos){//varificar la colision
+    public void mover(int direccion,List<Objeto> obstaculos){//verificar la colision
         if (direccion==0){
             direccion = (int) (Math.random()*4)+1;
         }
         switch(direccion){
             case 1://abajo
-                if (pos_y+1>49 || colision(this, obstaculos, direccion)){
+                if (pos_y+1>49 ){
                     break;
-                }                    
+                }   
+                if(colision(this, obstaculos, direccion)){
+                    switch ((int) (Math.random()*2)){// decide si acercarse al recurso en x o en y
+                        case 0:
+                            if(pos_x>0){
+                                pos_x--;
+                                break;
+                            }                            
+                        case 1:
+                            if(pos_x<49){
+                                pos_x++;
+                                break;
+                            }
+                    }  
+                }                 
                 pos_y++;
                 break;
             case 2://arriba
-                if (pos_y-1<0 || colision(this, obstaculos, direccion)){
+                if (pos_y-1<0){
                     break;
                 } 
+                if(colision(this, obstaculos, direccion)){
+                    switch ((int) (Math.random()*2)){// decide si acercarse al recurso en x o en y
+                        case 0:
+                            if(pos_x>0){
+                                pos_x--;
+                                break;
+                            }                            
+                        case 1:
+                            if(pos_x<49){
+                                pos_x++;
+                                break;
+                            }
+                                
+                    }
+                }
                 pos_y--;
                 break;
             case 3://derecha
-                if (pos_x+1>49 || colision(this, obstaculos, direccion)){
+                if (pos_x+1>49){
                     break;
                 }   
+                if(colision(this, obstaculos, direccion)){
+                    switch ((int) (Math.random()*2)){
+                        case 0:
+                            if(pos_y>0){
+                                pos_y--;
+                                break;
+                            }                            
+                        case 1:
+                            if(pos_y<49){
+                                pos_y++;
+                                break;  
+                            }                    
+                    }
+                }
                 pos_x++;
                 break;
             case 4://izquierda
-                if (pos_x-1<0 || colision(this, obstaculos, direccion)){
+                if (pos_x-1<0 ){
                     break;
-                } 
+                }
+                if(colision(this, obstaculos, direccion)){
+                    switch ((int) (Math.random()*2)){
+                        case 0:
+                            if(pos_y>0){
+                                pos_y--;
+                                break;
+                            }                            
+                        case 1:
+                            if(pos_y<49){
+                                pos_y++;
+                                break;
+                            }
+                    }
+                }
                 pos_x--;
                 break;
         }
+    
     } 
 
     public boolean colision(Agente agt,List<Objeto> obstaculos, int direccion){
         switch(direccion){
             case 1:
                 for(int i=0; i < obstaculos.size();i++){//colision en y por arriba
-                    if(agt.get_pos_y()+1==obstaculos.get(i).get_pos_y()-1 && (agt.get_pos_x()==obstaculos.get(i).get_pos_x() || agt.get_pos_x()==obstaculos.get(i).get_pos_x()+1 )){
+                    if(((agt.get_pos_y()+1)==(obstaculos.get(i).get_pos_y()-1)) && (agt.get_pos_x()==obstaculos.get(i).get_pos_x() || agt.get_pos_x()==(obstaculos.get(i).get_pos_x()+1) )){
                         return true;
                     }
                 }
             case 2:
                 for(int i=0; i < obstaculos.size();i++){//colision en y por abajo
-                    if(agt.get_pos_y()-1==obstaculos.get(i).get_pos_y() && (agt.get_pos_x()==obstaculos.get(i).get_pos_x() || agt.get_pos_x()==obstaculos.get(i).get_pos_x()+1 )){
+                    if((agt.get_pos_y()-1==obstaculos.get(i).get_pos_y()) && (agt.get_pos_x()==obstaculos.get(i).get_pos_x() || agt.get_pos_x()==(obstaculos.get(i).get_pos_x()+1) )){
                         return true;
                     }
                 }
             case 3:
                 for(int i=0; i < obstaculos.size();i++){//colision en x por la izq
-                    if(agt.get_pos_x()+1==obstaculos.get(i).get_pos_x() &&(agt.get_pos_y()==obstaculos.get(i).get_pos_y() || agt.get_pos_y()==obstaculos.get(i).get_pos_y()+1 )){
+                    if(((agt.get_pos_x()+1)==obstaculos.get(i).get_pos_x()) &&(agt.get_pos_y()==obstaculos.get(i).get_pos_y() || agt.get_pos_y()==(obstaculos.get(i).get_pos_y()-1 ))){
                         return true;
                     }
                 }
             case 4:
                 for(int i=0; i < obstaculos.size();i++){//posicion en x por al der
-                    if(agt.get_pos_x()-1==obstaculos.get(i).get_pos_x()+1 && (agt.get_pos_y()==obstaculos.get(i).get_pos_y() || agt.get_pos_y()==obstaculos.get(i).get_pos_y()+1 )){
+                    if(((agt.get_pos_x()-1)==(obstaculos.get(i).get_pos_x()+1)) && (agt.get_pos_y()==obstaculos.get(i).get_pos_y() || (agt.get_pos_y()==(obstaculos.get(i).get_pos_y()-1)) )){
                         return true;
                     }
                 }   

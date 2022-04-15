@@ -40,8 +40,8 @@ public class Simulacion {
 	
 	public void generar_objetos() {
 		for (int i=0; i<5; i++) { 
-			objetos.add(new Amenaza(-11, (int) (Math.random() *46) +2, (int) (Math.random() *46) +2)); //45 para que no se salga de los limites 
-			objetos.add(new Recurso(11, (int) (Math.random() *46)  +2, (int) (Math.random() *46) +2));
+			objetos.add(new Amenaza(-2, (int) (Math.random() *46) +2, (int) (Math.random() *46) +2)); //45 para que no se salga de los limites 
+			objetos.add(new Recurso(2, (int) (Math.random() *46)  +2, (int) (Math.random() *46) +2));
 			objetos.add(new Obstaculo(0, (int) (Math.random() *46) +2, (int) (Math.random() *46) +2));
 		}
 	}
@@ -81,7 +81,31 @@ public class Simulacion {
 		//si hay un agente se pone un 1
 		//si hay un obstaculo se pone un 2
 		//si hay un recurso se pone un 3
-		//si hay una amenaza se pone un 4
+		//si hay una amenaza se pone un 4			
+		for (int i=1; i<objetos.size();i++){
+			Objeto obj_aux= objetos.get(i);
+			int fila = obj_aux.get_pos_y();
+			int col= obj_aux.get_pos_x();
+			if(obj_aux.get_vida()==0){
+				mat.get(fila).set(col,2);
+				mat.get(fila-1).set(col,2);
+				mat.get(fila-1).set(col+1,2);
+				mat.get(fila).set(col+1,2);
+			}	
+			if(obj_aux.get_vida()>0){
+				mat.get(fila).set(col,3);
+				mat.get(fila-1).set(col,3);
+				mat.get(fila-1).set(col+1,3);
+				mat.get(fila).set(col+1,3);
+			}
+			
+			if(obj_aux.get_vida()<0){
+				mat.get(fila).set(col,4);
+				mat.get(fila-1).set(col,4);
+				mat.get(fila-1).set(col+1,4);
+				mat.get(fila).set(col+1,4);
+			}
+		}
 		for (int i=0; i<agentes.size();i++){
 			Agente agt_aux= agentes.get(i);
 			int col=agt_aux.get_pos_x();
@@ -97,43 +121,21 @@ public class Simulacion {
 			}	
 			
 		}
-		
-		for (int i=1; i<objetos.size();i++){
-			Objeto obj_aux= objetos.get(i);
-			int fila = obj_aux.get_pos_y();
-			int col= obj_aux.get_pos_x();
-			if(obj_aux.get_vida()==0){
-				mat.get(fila).set(col,2);
-				mat.get(fila+1).set(col,2);
-				mat.get(fila+1).set(col+1,2);
-				mat.get(fila).set(col+1,2);
-			}	
-			if(obj_aux.get_vida()>0){
-				mat.get(fila).set(col,3);
-				mat.get(fila+1).set(col,3);
-				mat.get(fila+1).set(col+1,3);
-				mat.get(fila).set(col+1,3);
-			}
-			
-			if(obj_aux.get_vida()<0){
-				mat.get(fila).set(col,4);
-				mat.get(fila+1).set(col,4);
-				mat.get(fila+1).set(col+1,4);
-				mat.get(fila).set(col+1,4);
-			}
-		}
 				
 		return mat;
 	}
 
 	public void simular () {
+		System.out.println("iniciando la simulación");
 		for (int i = 1; i<agentes.size(); i++) {
 				agentes.get (i).actuar(objetos,agentes);
 			}
 		for (int i=0; i<objetos.size (); i++) {
 				objetos.get (i).revisarVida();
-			}			
-		}
+			}	
+		System.out.println("Simulación realizada");		
+	}
+		
 
 }
 

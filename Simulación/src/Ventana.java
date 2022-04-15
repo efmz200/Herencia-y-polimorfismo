@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -13,6 +12,7 @@ public class Ventana implements ActionListener{
     JPanel panel;
     Simulacion simulacion;
     JButton simulButton;
+    GridBagConstraints constraints;
 
     public Ventana(){
         //inicia la simulación
@@ -21,18 +21,19 @@ public class Ventana implements ActionListener{
 
         //inicia la ventana
         ventana = new JFrame("Abejitas uwu");
-        ventana.setExtendedState(JFrame.MAXIMIZED_BOTH); 
+        ventana.setSize(1000, 800);
+        //ventana.setExtendedState(JFrame.MAXIMIZED_BOTH); 
         ventana.setLayout(new BorderLayout());
 
         //inicia el panel donde se van a cargar las etiquetas
         panel= new JPanel();
-        panel.setLayout(new GridLayout(50,51));
+        panel.setLayout(new GridLayout(51,51));
         rellenar_labels();//se llama a la función que rellena los labels
 
         simulButton = new JButton("simular"); 
         simulButton.addActionListener(this); 
-        panel.add(simulButton); 
-        ventana.add(panel);
+        panel.add(simulButton);
+        ventana.add(panel);         
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         ventana.setVisible(true);
         
@@ -40,8 +41,8 @@ public class Ventana implements ActionListener{
 
     public void rellenar_labels(){
         ArrayList<ArrayList<Integer>> mat=simulacion.obtener_matriz();
-        for(int i=0;i<49;i++){
-            for(int j=0;j<49;j++){
+        for(int i=0;i<50;i++){
+            for(int j=0;j<50;j++){
                 int tipo_casilla=mat.get(i).get(j);
                 JLabel label = new JLabel();
                 label.setOpaque(true);
@@ -79,9 +80,9 @@ public class Ventana implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        
+        ventana.remove(panel);
         panel= new JPanel();
-        panel.setLayout(new GridLayout(50,51));
+        panel.setLayout(new GridLayout(51,51));
         simulacion.simular();
         rellenar_labels(); 
         panel.add(simulButton); 
