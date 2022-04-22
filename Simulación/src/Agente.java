@@ -8,13 +8,12 @@ public abstract class Agente {
     private int pos_y_objetivo;
     private int pos_x_objetivo;
     private int estado;//0 sin carga, 1 con carga
-    private boolean lleva_carga;    
+       
     
     public Agente(int x,int y){
         pos_y=y;
         pos_x=x;
-        estado=0;
-        lleva_carga=false;   
+        estado=0;   
     }     
     public abstract void accion_especial(List<Objeto> objetos,int num_amenaza); //escapar o atacar segun el agente   
 
@@ -50,25 +49,31 @@ public abstract class Agente {
         System.out.println("Estoy a: "+Math.abs(pos_x-casa.get_pos_x())+"en x de casa y a: "+(Math.abs(pos_y-casa.get_pos_y()))+"en y");
         if ((Math.abs(pos_x-casa.get_pos_x())<2) && (Math.abs(pos_y-casa.get_pos_y())<2) ){//esta en rango de la casa
             System.out.println("deje un recurso en casa en:"+pos_x+", "+ pos_y);
-            estado=0;    
+            estado=0; 
+            return false;   
         }
         else{
             if(pos_x<casa.get_pos_x()){
-                mover(3,obstaculos);                    
+                mover(3,obstaculos); 
+                return true;                   
             }
             else if(pos_x>casa.get_pos_x()){
-                mover(4,obstaculos);                    
+                mover(4,obstaculos);   
+                return true;                 
             }
         
             else if(pos_y<casa.get_pos_y()){
-                mover(1,obstaculos); 
+                mover(1,obstaculos);
+                return true; 
                    
             }
             else if(pos_y>casa.get_pos_y()){
-                mover(2,obstaculos);                    
+                mover(2,obstaculos); 
+                return true;                   
             } 
+            return false;
         }
-        return true;
+        
 
     }
     public boolean buscar_recurso(List<Objeto> objetos){
@@ -85,7 +90,7 @@ public abstract class Agente {
                             objetos.set(i,obj_aux);//actualiza el recurso en la lista de objetos 
                             estado=1;  
                         }                        
-                            mover(0, objetos);
+                        mover(0, objetos);
                         return true;
                     }
                     else{
@@ -301,10 +306,7 @@ public abstract class Agente {
     }
     public void set_estado(int estado){
         this.estado=estado;
-    }
-    public void set_carga(boolean carga){
-        lleva_carga=carga;
-    }     
+    }   
 
     public int get_pos_y(){
         return pos_y;
@@ -320,8 +322,5 @@ public abstract class Agente {
     }
     public int get_estado(){
         return estado;
-    }
-    public boolean get_carga(){
-        return lleva_carga;
     }
 }

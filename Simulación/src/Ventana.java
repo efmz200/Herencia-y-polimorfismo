@@ -7,12 +7,10 @@ import java.awt.*;
 import java.awt.event.*; 
 
 public class Ventana implements ActionListener{
-    ArrayList<ArrayList<Integer>> mat;
-    JFrame ventana;
-    JPanel panel;
-    Simulacion simulacion;
-    JButton simulButton;
-    GridBagConstraints constraints;
+    private JFrame ventana;
+    private JPanel panel;
+    private Simulacion simulacion;
+    private JButton simulButton;
 
     public Ventana(){
         //inicia la simulación
